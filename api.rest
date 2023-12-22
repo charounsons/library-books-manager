@@ -1,0 +1,106 @@
+# Install the VScode "Rest Client" extension to utilize this file.
+
+##################################################
+#                   LOGIN SECTION                #
+##################################################
+
+### Login / Generate an auth token
+
+POST http://localhost:3000/auth/login HTTP/1.1
+content-type: application/json
+
+{
+  "username": "a_username",
+  "password": "a_secret"
+}
+
+##################################################
+#                   BOOKS SECTION                #
+##################################################
+
+### Get all books
+
+GET http://localhost:3000/books HTTP/1.1
+content-type: application/json
+
+### Get a specific book by ID
+
+GET http://localhost:3000/books/6585b4e88895b0d46462ff3a HTTP/1.1
+content-type: application/json
+
+### Create a new book
+
+POST http://localhost:3000/books HTTP/1.1
+content-type: application/json
+
+{
+  "title": "My Book Title",
+  "author": "My Book Author"
+}
+
+### Update a book by ID
+
+PUT http://localhost:3000/books/6585b4e88895b0d46462ff3a HTTP/1.1
+content-type: application/json
+
+{
+  "title": "Updated Book Title",
+  "author": "Updated Book Author"
+}
+
+### Delete a book by ID
+
+DELETE http://localhost:3000/books/6584de757df9fbccb599b650 HTTP/1.1
+content-type: application/json
+
+### Delete all books
+
+DELETE http://localhost:3000/books HTTP/1.1
+content-type: application/json
+
+
+
+
+
+
+
+
+
+##################################################
+#                   TASKS SECTION                #
+##################################################
+
+### Get all tasks
+
+GET http://localhost:3000/tasks HTTP/1.1
+content-type: application/json
+
+### Get a specific task by ID
+
+GET http://localhost:3000/tasks/6584d5c3282da71ca8749bfe HTTP/1.1
+content-type: application/json
+
+### Create a new task
+
+POST http://localhost:3000/tasks HTTP/1.1
+content-type: application/json
+
+{
+  "title": "My Task Title",
+  "description": "My Task Description"
+}
+
+### Update a task by ID
+
+PUT http://localhost:3000/tasks/6584d5e8282da71ca8749c03 HTTP/1.1
+content-type: application/json
+
+{
+  "title": "Updated Task Title",
+  "description": "Updated Task Description"
+}
+
+### Delete a task by ID
+
+DELETE http://localhost:3000/tasks/6584d64e282da71ca8749c08 HTTP/1.1
+content-type: application/json

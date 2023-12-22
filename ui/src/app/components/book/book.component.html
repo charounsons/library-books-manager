@@ -1,0 +1,121 @@
+<!-- src/app/components/book/book.component.html -->
+<div class="navigation">
+  <a routerLink="/">Home</a>
+  <div class="login-button" (click)="toggleLogin()">
+    {{ loggedIn ? 'Logout' : 'Login' }}
+  </div>
+</div>
+
+<div>
+  <h1>📖 Library Books Manager</h1>
+</div>
+
+<div class="container">
+  <div class="add-new-book">
+    <h2 class="heading">Add New Book</h2>
+    <div class="form-section">
+      <form [formGroup]="bookForm" (ngSubmit)="addBook()">
+        <div>
+          <div>
+            <label for="title">Title</label>
+          </div>
+          <div *ngIf="bookForm.get('title').hasError('required') && bookForm.get('title').touched"
+            class="error-message">
+            Title is required.
+          </div>
+          <div *ngIf="bookForm.get('title').hasError('maxlength') && bookForm.get('title').touched"
+            class="error-message">
+            Title cannot exceed 255 characters.
+          </div>
+          <input type="text" id="title" formControlName="title" />
+        </div>
+        <div>
+          <div>
+            <label for="author">Author</label>
+          </div>
+          <div *ngIf="bookForm.get('author').hasError('required') && bookForm.get('author').touched"
+            class="error-message">
+            Author is required.
+          </div>
+          <div *ngIf="bookForm.get('author').hasError('maxlength') && bookForm.get('author').touched"
+            class="error-message">
+            Author cannot exceed 255 characters.
+          </div>
+          <input type="text" id="author" formControlName="author" />
+        </div>
+        <div>
+          <button type="submit">Add Book</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="library-books">
+    <h2 class="heading">Library Books</h2>
+    <div class="books-section">
+      <div class="search-section" [formGroup]="searchForm">
+        <input type="text" placeholder="Search for a book..." id="search" formControlName="search"
+          (keyup)="searchBooks()" />
+        <button (click)="searchBooks()">Search</button>
+        <button (click)="resetSearchResults()">Reset</button>
+      </div>
+      <div *ngIf="books.length < 1; else showBooks" class="pagination-container zero-books">
+        There are no books in the library. 😭
+      </div>
+      <ng-template #showBooks>
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th (click)="sortColumn('title')" class="sortable">
+                Title
+                <span *ngIf="sortByColumn === 'title'" class="sort-icon">
+                  <span *ngIf="sortAscending">&#9660;</span> <!-- Down arrow for ascending order -->
+                  <span *ngIf="!sortAscending">&#9650;</span> <!-- Up arrow for descending order -->
+                </span>
+              </th>
+              <th (click)="sortColumn('author')" class="sortable">
+                Author
+                <span *ngIf="sortByColumn === 'author'" class="sort-icon">
+                  <span *ngIf="sortAscending">&#9660;</span>
+                  <span *ngIf="!sortAscending">&#9650;</span>
+                </span>
+              </th>
+              <th (click)="sortColumn('createdAt')" class="sortable">
+                Date Added
+                <span *ngIf="sortByColumn === 'createdAt'" class="sort-icon">
+                  <span *ngIf="sortAscending">&#9660;</span>
+                  <span *ngIf="!sortAscending">&#9650;</span>
+                </span>
+              </th>
+              <th>Edit</th>
+              <th>Delete</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr
+              *ngFor="let book of (searchResults.length > 0 ? searchResults : books) | paginate: { itemsPerPage: 10, currentPage: currentPage, id: 'paginationId' }; let i = index">
+              <td>{{ (currentPage - 1) * itemsPerPage + i + 1 }}</td>
+              <td>{{ book.title }}</td>
+              <td>{{ book.author }}</td>
+              <td>{{ book.createdAt | date: 'MMMM d, y | hh:mm a' }}</td>
+              <td>
+                <button class="btn btn-primary btn-space" (click)="updateBook(book._id)">Edit</button>
+              </td>
+              <td>
+                <button class="btn btn-danger btn-space" (click)="deleteBook(book._id)">Delete</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div *ngIf="books.length > 10" class="pagination-container">
+          <pagination-controls (pageChange)="pageChanged($event)" id="paginationId"></pagination-controls>
+        </div>
+      </ng-template>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  &copy; 2023 Library Books Manager
+</div>

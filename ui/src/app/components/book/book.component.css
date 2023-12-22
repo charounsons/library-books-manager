@@ -1,0 +1,366 @@
+/* src/app/components/book.component.css */
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  background: linear-gradient(to bottom, #3498db, #2980b9);
+  color: #ecf0f1;
+  font-family: 'Arial', sans-serif;
+}
+
+.navigation {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  background: #2c3e50;
+}
+
+.navigation a {
+  color: #ecf0f1;
+  text-decoration: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+.navigation a:hover {
+  background-color: #34495e;
+}
+
+.login-button {
+  cursor: pointer;
+  padding: 5px 10px;
+  background-color: #34a9db;
+  color: #ecf0f1;
+  border: none;
+  border-radius: 5px;
+  margin-left: 10px;
+}
+
+.login-button:hover {
+  background-color: #0cdd60;
+}
+
+.container {
+  display: grid;
+  /* grid-template-columns: 1fr 1fr; */
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  /* margin: 25px 0px 100px 160px */
+}
+
+.heading {
+  text-align: center;
+}
+
+.library-books {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.add-new-book,
+.library-books {
+  width: 100%;
+  padding: 20px;
+  /* Add padding to the sections */
+  box-sizing: border-box;
+  /* Include padding in the width calculation */
+}
+
+.add-new-book {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.books-section {
+  background: #429bd7;
+  border-radius: 10px;
+  padding: 50px;
+}
+
+.table {
+  width: 100%;
+  margin-bottom: 1rem;
+  color: #ecf0f1;
+}
+
+/* Add responsive styling to the table */
+@media (max-width: 768px) {
+
+  .table th,
+  .table td {
+    padding: 0.5rem;
+    font-size: 14px;
+  }
+
+  .table thead th {
+    font-size: 16px;
+  }
+}
+
+/* Make the form inputs full width on smaller screens */
+@media (max-width: 576px) {
+  input {
+    width: 100%;
+  }
+}
+
+/* Center-align sections on smaller screens */
+@media (max-width: 576px) {
+
+  .add-new-book,
+  .library-books {
+    margin: 0 auto;
+    /* Center-align the sections */
+  }
+}
+
+.table th,
+.table td {
+  padding: 0.75rem;
+  vertical-align: top;
+  border-top: 1px solid #dee2e6;
+}
+
+.table thead th {
+  vertical-align: bottom;
+  border-bottom: 2px solid #dee2e6;
+}
+
+.table tbody+tbody {
+  border-top: 2px solid #dee2e6;
+}
+
+.table .table {
+  background-color: green;
+}
+
+.table-bordered {
+  border: 1px solid #dee2e6;
+}
+
+.table-bordered th,
+.table-bordered td {
+  border: 1px solid #dee2e6;
+}
+
+.table-bordered thead th,
+.table-bordered thead td {
+  border-bottom-width: 2px;
+}
+
+/* Add alternating row colors */
+.even-row {
+  background-color: green;
+}
+
+.odd-row {
+  background-color: #429bd7;
+}
+
+/* Apply styles to even rows */
+tr:nth-child(even) {
+  background-color: #f0f0f0;
+  /* Even row color */
+}
+
+/* Apply styles to odd rows */
+tr:nth-child(odd) {
+  background-color: #ffffff;
+  /* Odd row color */
+}
+
+ul {
+  list-style-type: "\1F4DA";
+}
+
+.form-section {
+  /* background: #2980b9; */
+  background: #429bd7;
+  /* padding: 100px 100px; */
+  padding: 100px 140px 100px 100px;
+  border-radius: 10px;
+}
+
+label {
+  margin-bottom: 5px;
+}
+
+input {
+  padding: 12px;
+  margin-bottom: 15px;
+  width: 125%;
+  box-sizing: border-box;
+  /* Include padding and border in width calculation */
+  border: 3px solid #6ab5e7;
+  border-radius: 10px;
+}
+
+button {
+  padding: 10px;
+  background-color: #05913d;
+  color: #ecf0f1;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  /* margin-top: 10px; */
+}
+
+button:hover {
+  background-color: #047531;
+}
+
+.btn-space {
+  margin-left: 10px;
+}
+
+h1 {
+  text-align: center;
+  padding: 45px 0;
+}
+
+li {
+  margin-bottom: 10px;
+}
+
+.pagination-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+/* Add styles for error messages */
+.error-message {
+  color: #ff0000;
+  margin-top: 5px;
+}
+
+.footer {
+  /* position: fixed; */
+  bottom: 0;
+  width: 100%;
+  background: #2c3e50;
+  padding: 40px;
+  color: #ecf0f1;
+  text-align: center;
+}
+
+/* Responsive adjustments */
+/* @media (max-width: 1200px) {
+  input {
+    width: 125%;
+  }
+} */
+
+@media (max-width: 995px) {
+  .container {
+    grid-template-columns: 1fr;
+    margin: 0 auto;
+  }
+
+  .form-section,
+  .books-section {
+    padding: 20px;
+  }
+
+  input {
+    width: 100%;
+  }
+}
+
+/* Add a hamburger icon for mobile navigation */
+.hamburger-icon {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.bar {
+  width: 25px;
+  height: 3px;
+  background-color: #ecf0f1;
+  margin: 3px 0;
+  transition: 0.4s;
+}
+
+/* Make the navigation links collapsible on smaller screens */
+@media (max-width: 768px) {
+  .navigation {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .navigation a {
+    margin-top: 10px;
+  }
+
+  .login-button {
+    margin-top: 10px;
+  }
+
+  .hamburger-icon {
+    display: flex;
+  }
+
+  .bar1.rotate-down {
+    transform: rotate(-45deg) translate(-5px, 6px);
+  }
+
+  .bar2.fade-out {
+    opacity: 0;
+  }
+
+  .bar3.rotate-up {
+    transform: rotate(45deg) translate(-5px, -6px);
+  }
+}
+
+/* Keep the input width between 996px and 1200px */
+@media (min-width: 996px) and (max-width: 1200px) {
+  input {
+    /* Adjust the percentage as needed */
+    width: 125%;
+  }
+
+  .form-section {
+    padding: 100px 100px 100px 60px;
+  }
+}
+
+th.sortable {
+  cursor: pointer;
+}
+
+.sort-icon {
+  display: inline-block;
+  margin-left: 4px;
+  font-size: 12px;
+}
+
+/* Add some styling for better visibility of arrows */
+.sort-icon span {
+  color: #ec8d2d;
+  font-weight: bold;
+}
+
+#search {
+  margin-bottom: 0px;
+}
+
+.search-section {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  width: 100%;
+  gap: 6px;
+  margin-bottom: 15px;
+}
+
+.zero-books {
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
